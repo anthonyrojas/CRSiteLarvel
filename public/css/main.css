@@ -1,0 +1,95 @@
+body{
+	overflow-x: hidden;
+}
+main{
+	min-height: 100vh;
+	background-color: #1A3344;
+}
+footer{
+	background-color: #222;
+	color: white;
+	padding: 2.5em 0.5em;
+	text-align: center;
+}
+.footer-col{
+	margin-bottom: 0.8em;
+}
+nav a:hover{
+	color: #FFF !important;
+}
+.fullscreen-image{
+	height: 100vh !important;
+	min-width: 100vw !important;
+	width: auto !important;
+}
+.carousel-content{
+	position: absolute;
+	text-align: center;
+	margin-left: auto;
+	text-align: center;
+	z-index: 10;
+	color: #FFF;
+	width: 100%;
+	font-size: 10em;
+	height: 100vh;
+	top: 15%;
+	text-shadow: 0 1px 10px #000;
+	font-family: 'Marcellus SC', serif;
+	font-weight: bolder;
+}
+
+.bg-faded-blue{
+	background-color: #255381;
+}
+.bg-black{
+	background-color: #000 !important;
+}
+.bg-light-blue-1{
+	background-color: #D5F2FF !important;
+}
+.box-shadow-1{
+	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.25), 0 6px 30px 5px rgba(0, 0, 0, 0.3), 0 8px 10px -7px rgba(0, 0, 0, 0.5);
+}
+.parallax{
+	width: 100%;
+	height: 20em;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.header-image{
+	width: 100vw;
+	padding-top: 3.9em;
+}
+hr.fancy {
+    overflow: visible; /* For IE */
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+hr.fancy:before { /* Not really supposed to work, but does */
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+.h-v100{
+	min-height: 100vh !important;
+}
+@media screen and (max-width: 976px){
+	.carousel-content{
+		font-size: 8em;
+	}
+}
+@media screen and (max-width: 500px){
+	.carousel-content{
+		font-size: 6em;
+	}
+}
