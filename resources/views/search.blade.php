@@ -8,6 +8,15 @@
 			<div class="row">
 				<div class="col-12 text-center"><h1 class="display-3">Search</h1></div>
 			</div>
+			@if($errors->first('searchErrMsg'))
+				<div class="row" id="searchErr">
+					<div class="col-12">
+						<div class="alert alert-danger" role="alert">
+							{{$errors->first('searchErrMsg')}}
+						</div>
+					</div>
+				</div>
+			@endif
 			<div class="row">
 				<div class="col-12">
 					<p class="lead">
@@ -15,36 +24,34 @@
 					</p>
 				</div>
 			</div>
-			<form class="row" method="POST">
-				<div class="col-12">
-					<div class="form-group">
-						<div class="input-group my-4">
-							 <div class="input-group-prepend">
-							 	<span class="input-group-text" id="searchbar-addon">#</span>
-							 </div>
-							<input type="text" class="form-control" placeholder="Enter tag..." aria-label="Enter tag..." aria-describedby="search-btn">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="submit" id="search-btn"><i class="material-icons">search</i></button>
-							</div>
+			{!! Form::open(['action'=>'SearchController@search', 'method'=>'POST', 'enctype' => 'multipart/form-data']) !!}
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-prepend">
+						 	<span class="input-group-text" id="searchbar-addon">#</span>
 						</div>
-					</div>
+						{{Form::text('searchTag', $value=null, ['class'=>'form-control', 'placeholder'=>'Enter tag...'])}}
+						<div class="input-group-append">
+							{{Form::submit('Search', ['class'=>'btn btn-primary'])}}
+						</div>
+					</div> 
 				</div>
-				<div class="offset-1 col-11 my-3">
+				<div class="col-12">
 					<p>Search By:</p>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="searchOption" value="player" id="playerRadioCheck" checked>
-						<label class="form-check-label" for="playerRadioCheck">
-							Player
-						</label>
-					</div>
-					<div class="form-check">
-						<input type="radio" name="searchOption" class="form-check-input" value="clan" id="clanRadioCheck">
-						<label class="form-check-label" for="clanRadioCheck">
-							Clan
-						</label>
-					</div>
 				</div>
-			</form>
+				<div class="form-check mx-5">
+					<input class="form-check-input" type="radio" name="searchOption" value="player" id="playerRadioCheck" checked>
+					<label class="form-check-label" for="playerRadioCheck">
+						Player
+					</label>
+				</div>
+				<div class="form-check mx-5">
+					<input type="radio" name="searchOption" class="form-check-input" value="clan" id="clanRadioCheck">
+					<label class="form-check-label" for="clanRadioCheck">
+						Clan
+					</label>
+				</div>
+			{!!Form::close()!!}
 		</div>
 	</div>
 @endsection

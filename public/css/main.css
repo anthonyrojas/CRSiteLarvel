@@ -6,13 +6,19 @@ main{
 	background-color: #1A3344;
 }
 footer{
-	background-color: #222;
+	background-color: #111;
 	color: white;
-	padding: 2.5em 0.5em;
+	padding: 4em 0.5em;
 	text-align: center;
+	font-size: 1.4em;
+	font-family: 'Iceland', sans-serif;
 }
 .footer-col{
 	margin-bottom: 0.8em;
+}
+nav {
+	font-family: 'Iceland', sans-serif;
+	text-transform: uppercase;
 }
 nav a:hover{
 	color: #FFF !important;
@@ -67,7 +73,7 @@ hr.fancy {
     height: 30px;
     border-style: solid;
     border-color: black;
-    border-width: 1px 0 0 0;
+    border-width: 2px 0 0 0;
     border-radius: 20px;
 }
 hr.fancy:before { /* Not really supposed to work, but does */
@@ -77,11 +83,50 @@ hr.fancy:before { /* Not really supposed to work, but does */
     margin-top: -31px;
     border-style: solid;
     border-color: black;
-    border-width: 0 0 1px 0;
+    border-width: 0 0 2px 0;
     border-radius: 20px;
 }
 .h-v100{
 	min-height: 100vh !important;
+}
+.first-letter-uppercase{
+	text-transform: capitalize;
+}
+.img-desc-icon{
+	height: 5em;
+	width: auto;
+	margin-left: 2em; 
+}
+.img-icon{
+	height: 2em;
+	width: auto;
+}
+.bg-clash-1{
+	background-image: url('../images/cardinfobg.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.bg-clash-2{
+	background-image: url('../images/cardinfobg2.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.bg-clash-3{
+	background-image: url('../images/cardinfobg3.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;	
+}
+.bg-clash-4{
+	background-image: url('../images/cardinfobg4.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;	
+}
+.bg-black-overlay{
+	background-color: rgba(0, 0, 0, 0.55) !important;
 }
 @media screen and (max-width: 976px){
 	.carousel-content{

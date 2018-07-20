@@ -16,5 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/clan', 'ClanController@index');
+Route::get('/clan/{clanTag}', 'ClanController@getClan');
+Route::get('/player/{playerTag}', 'PlayerController@getPlayer');
 Route::get('/search', 'SearchController@index');
 Route::post('/search', 'SearchController@search');

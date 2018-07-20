@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 //http request library
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\ClientException;
+use Session;
 
 //define rthe class and extend the Controller
 class ClanController extends Controller
@@ -33,6 +36,31 @@ class ClanController extends Controller
 		}else{
 			//there was an error
 			return view('clan');
+		}
+	}
+	public function getClan($clanTag){
+		//setting this returns an array accessible through normal php array syntax
+		$clanSearchData = Session::get('clanSearchData');
+		if($clanSearchData != null){
+			return view('clan')->with('clanData', $clanSearchData);
+		}else{
+			$client = new Client(['base_uri' => Config::get('constants.options.crhost')]);
+			$token = Config::get('constants.options.crkey');
+			$headers = [
+				'Authorization' => 'Bearer ' . $token,
+				'Accept' => 'application/json'
+			];
+			$reqPath = 'clan/' . $clanTag;
+			try{
+				$response = $client->request('GET', $reqPath, ['headers'=>$headers]);
+				return view('clan')->with('clanData', json_decode($response->getBody(), true));
+			}catch(ClientException $e){
+				$errBody = json_decode($e->getResponse()->getBody(), true);
+				return view('clan')->withErrors(['clanErr' => 'Clan not found. '.$errBody['message']]);
+			}catch(ServerException $e){
+				$errBody = json_decode($e->getResponse()->getBody(), true);
+				return view('clan')->withErrors(['clanErr' => 'Clash Royale server error. ' . $errBody['message']]);
+			}
 		}
 	}
 }
