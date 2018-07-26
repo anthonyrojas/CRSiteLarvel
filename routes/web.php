@@ -20,3 +20,6 @@ Route::get('/clan/{clanTag}', 'ClanController@getClan');
 Route::get('/player/{playerTag}', 'PlayerController@getPlayer');
 Route::get('/search', 'SearchController@index');
 Route::post('/search', 'SearchController@search');
+Route::get('/about', function(){
+	return view('about');
+});

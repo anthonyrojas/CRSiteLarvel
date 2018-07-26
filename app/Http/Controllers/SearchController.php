@@ -34,17 +34,19 @@ class SearchController extends Controller{
 		try{
 			if($searchOption == 'player'){
 				$reqPath = '/player/' . $searchTag;
-				$response = $client->request('GET', $reqPath, [
-					'headers'=>$headers
-				]);
-				return redirect('player/' . $searchTag)->with(['playerSearchData' => json_decode($response->getBody(), true)]);
+				$response = $client->request('GET', $reqPath, [ 'headers'=>$headers ]);
+				$reqPathChests = 'player/' . $searchTag . '/chests';
+				$reqPathBattles = 'player/' . $searchTag . '/battles';
+				$chestsRes = $client->request('GET', $reqPathChests, ['headers'=>$headers]);
+				$battlesRes = $client->request('GET', $reqPathBattles, ['headers' => $headers]);
+				return redirect('player/' . $searchTag)->with('playerSearchData', json_decode($response->getBody(), true))->with('playerSearchChestsData', json_decode($chestsRes->getBody(), true))->with('playerBattlesData',json_decode($battlesRes->getBody(), true));
 				//return $response->getBody();
 			}else{
 				$reqPath = '/clan/' . $searchTag;
-				$response = $client->request('GET', $reqPath, [
-					'headers'=>$headers
-				]);
-				return redirect('clan/' . $searchTag)->with(['clanSearchData' => json_decode($response->getBody(), true)]);
+				$reqPathClanWar = 'clan/' . $searchTag . '/war';
+				$response = $client->request('GET', $reqPath, ['headers'=>$headers]);
+				$resClanWar = $client->request('GET', $reqPathClanWar, ['headers'=>$headers]);
+				return redirect('clan/' . $searchTag)->with('clanSearchData', json_decode($response->getBody(), true))->with('clanWarSearchData', json_decode($resClanWar->getBody(), true));
 				//return $response->getBody();,
 			}
 		}catch(ClientException $e){
