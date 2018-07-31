@@ -23,3 +23,4 @@ Route::post('/search', 'SearchController@search');
 Route::get('/about', function(){
 	return view('about');
 });
+Route::post('/contact', 'AccountController@contact');

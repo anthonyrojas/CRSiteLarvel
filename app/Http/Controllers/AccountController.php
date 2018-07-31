@@ -12,39 +12,37 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\ClientException;
 use Session;
+use Illuminate\Http\Request;
 
 class AccountController extends Controller{
 	public function contact(Request $request){
 		$this->validate($request, [
 			'email'=>'required',
-			'firstName'=>'required',
-			'lastName'=>'required',
 			'subject'=>'required',
 			'message'=>'required'
 		]);
 		$email = $request->input('email');
-		$firstName = $request->input('firstName');
-		$lastName = $request->input('lastName');
 		$subject = $request->input('subject');
-		$message = $request->input('message');
+		$emailMessage = $request->input('message');
 		//sanitize email and check for valid entry
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 		if($email == null || !filter_var($email, FILTER_VALIDATE_EMAIL)){
 			//invalid email
-		}
-		if(empty($firstName) || is_null($firstName)){
-			//null or empty first name
-		}
-		if(empty($lastName) || is_null($lastName)){
-			//null or empty last name
+			return redirect()->back()->withErrors(['emailFormErr'=>'You must enter a valid email.']);
 		}
 		if(empty($subject) || is_null($subject)){
 			//null or empty subject
+			return redirect()->back()->withErrors(['emailFormErr'=>'You must enter am email subject.']);
 		}
-		if(empty($message) || is_null($message)){
+		if(empty($emailMessage) || is_null($emailMessage)){
 			//null or empty message
+			return redirect()->back()->withErrors(['emailFormErr'=>'You must enter an email message.']);
 		}
-
-		//no errors, send email
+		$data = array('email'=>$email, 'emailMessage'=>$emailMessage, 'subject' => $subject);
+      	Mail::send('mail.contactForm', $data, function($message) use ($email, $subject) {
+        	$message->to('crnormies01@gmail.com', 'Sir Doge')->subject("Contact Form - " . $subject);
+        	$message->from('crnormies01@gmail.com','CR Normie');
+      	});
+		return redirect()->back()->with('emailSuccess', 'Email sent successfully!');
 	}
 }
