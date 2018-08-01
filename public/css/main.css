@@ -17,6 +17,22 @@ footer{
 .footer-col{
 	margin-bottom: 0.8em;
 }
+.footer-link:hover{
+	color: #00ABFF !important;
+	border-radius: 50%;
+	animation: pulse 1.5s infinite;
+}
+@keyframes pulse{
+   0% {
+    box-shadow: 0 0 0 0 rgba(0,255,128, 0.9);
+  }
+  75% {
+    box-shadow: 0 0 10px 16px rgba(255,255,255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+  }
+}
 nav {
 	font-family: 'Iceland', sans-serif;
 	text-transform: uppercase;
