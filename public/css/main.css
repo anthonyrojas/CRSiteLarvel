@@ -5,6 +5,7 @@ main{
 	min-height: 100vh;
 	background-color: #1A3344;
 	margin: 0;
+	overflow-x: hidden;
 }
 footer{
 	background-color: #111;

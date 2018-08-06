@@ -32,21 +32,42 @@ About
 		<div class="col-12">
 			<h3 class="text-white text-center">Contact</h3>
 		</div>
+	</div>
+	@if(session()->has('emailSuccess'))
+	<div class="row my-3">
+		<div class="col-12">
+			<div class="alert alert-success" role="alert">
+				Email sent successfully!
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
 	</div> 
+	@endif
+	@if($errors->first('emailFormErr'))
+	<div class="row my-3">
+		<div class="col-12">
+			<div class="alert alert-danger">
+				{{$errors->first('emailFormErr')}}
+			</div>
+		</div>
+	</div> 
+	@endif
 	{!! Form::open(['action'=>'AccountController@contact', 'method'=>'POST', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group py-3">
 			<div class="input-group">
-				{{Form::email('email', $value=null, ['class'=>'form-control', 'placeholder'=>'Email'])}}
+				{{Form::email('email', $value=null, ['class'=>'form-control', 'placeholder'=>'Email', 'required'=>''])}}
 			</div> 
 		</div>
 		<div class="form-group py-3">
 			<div class="input-group">
-				{{Form::text('subject', $value=null, ['class'=>'form-control', 'placeholder'=>'Subject'])}}
+				{{Form::text('subject', $value=null, ['class'=>'form-control', 'placeholder'=>'Subject', 'required'=>''])}}
 			</div>
 		</div>
 		<div class="form-group py-3">
 			<div class="input-group">
-				{{Form::textarea('message', $value=null, ['class'=>'form-control', 'placeholder'=>'Email Message...'])}}
+				{{Form::textarea('message', $value=null, ['class'=>'form-control', 'placeholder'=>'Email Message...', 'required'=>''])}}
 			</div>
 		</div>
 		<div class="form-group text-center">
@@ -56,4 +77,7 @@ About
 </div>
 @endsection
 @section('scripts')
+	<script>
+		$('.alert').alert()
+	</script>
 @endsection

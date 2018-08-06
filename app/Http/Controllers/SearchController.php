@@ -54,7 +54,7 @@ class SearchController extends Controller{
 		}catch(ServerException $e){
 			return redirect()->back()->withErrors(['searchErrMsg'=>'Unable to find a player or clan with that tag.']);
 		}
-		return redirect()->back()->withErrors(['Unable to find a player or clan with that tag.']);
+		return redirect()->back()->withErrors(['searchErrMsg'=>'Unable to find a player or clan with that tag.']);
 		//return 'Form submitted! The search tag is: ' . $request->input('searchTag') . ' with option=>' . $request->input('searchOption');
 	}
 }

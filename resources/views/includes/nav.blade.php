@@ -12,6 +12,9 @@
           <a class="nav-link" href="/clan">Clan</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/open-tournaments">Open Tournaments</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/search">Search</a>
         </li>
         <li class="nav-item">

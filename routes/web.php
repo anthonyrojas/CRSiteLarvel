@@ -24,3 +24,4 @@ Route::get('/about', function(){
 	return view('about');
 });
 Route::post('/contact', 'AccountController@contact');
+Route::get('/open-tournaments', 'TournamentController@findOpen');
