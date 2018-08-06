@@ -1,6 +1,9 @@
 body{
 	overflow-x: hidden;
 }
+header{
+	overflow-x: hidden;
+}
 main{
 	min-height: 100vh;
 	background-color: #1A3344;
@@ -14,6 +17,7 @@ footer{
 	text-align: center;
 	font-size: 1.4em;
 	font-family: 'Iceland', sans-serif;
+	overflow-x: hidden;
 }
 .footer-col{
 	margin-bottom: 0.8em;
@@ -162,6 +166,9 @@ hr.fancy:before { /* Not really supposed to work, but does */
 }
 @media screen and (max-width: 500px){
 	.carousel-content{
-		font-size: 6em;
+		font-size: 4em;
+	}
+	.display-3{
+		font-size: 3rem !important;
 	}
 }

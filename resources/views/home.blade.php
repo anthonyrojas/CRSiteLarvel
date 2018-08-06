@@ -30,7 +30,7 @@
 				<div class="carousel-item">
 					<img class="d-block fullscreen-image" src="{{url('/images/home/cr5.jpg')}}" alt="5th slide">
 				</div>
-				<div class="carousel-content"><img src="{{url('/images/navbrand.png')}}" alt="normies logo">The Normies</div>
+				<div class="carousel-content"><img class="d-inline-block" src="{{url('/images/navbrand.png')}}" alt="normies logo"><span class="d-block">The Normies</span></div>
 			</div>
 		</div>
 		<div class="container bg-faded-blue py-4">
