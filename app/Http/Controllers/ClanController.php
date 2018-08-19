@@ -66,4 +66,24 @@ class ClanController extends Controller
 			}
 		}
 	}
+	public function getWarLog($clanTag){
+		$client = new Client(['base_uri' => Config::get('constants.options.crhost')]);
+		$token = Config::get('constants.options.crkey');
+		$headers = [
+			'Authorization' => 'Bearer ' . $token,
+			'Accept' => 'application/json'
+		];
+		$reqPath = '/clan/' . $clanTag . '/warlog';
+		$reqPathClan = '/clan/' . $clanTag;
+		try{
+			$response = $client->request('GET', $reqPath, ['headers'=>$headers]);
+			$resClan = $client->request('GET', $reqPathClan, ['headers'=>$headers]);
+			return view('warHistory')->with('clanWarData', json_decode($response->getBody(), true))->with('clanData', json_decode($resClan->getBody(),true));
+		}catch(ClientException $e){
+			$errBody = json_decode($e->getResponse()->getBody(), true);
+			return view('warHistory')->withErrors(['clanWarErr' => 'Clan war logs not found. ' . $errBody['message']]);
+		}catch(ServerException $e){
+			return view('warHistory')->withErrors(['clanWarErr' => 'Clan war logs not found. ' . $errBody['message']]);
+		}
+	}
 }

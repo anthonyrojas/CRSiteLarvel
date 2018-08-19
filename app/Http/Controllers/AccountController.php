@@ -45,4 +45,6 @@ class AccountController extends Controller{
       	});
 		return redirect()->back()->with('emailSuccess', 'Email sent successfully!');
 	}
+
+	public function sendMessage(){}
 }

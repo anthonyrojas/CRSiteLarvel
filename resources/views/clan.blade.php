@@ -315,6 +315,11 @@
 			</div>
 		</div>
 		@endif
+		<div class="row mt-5">
+			<div class="col-12 text-center">
+				<a class="btn btn-primary d-inline-block" href="/clan/{{$clanData['tag']}}/war-history">View Clan War History</a>
+			</div>
+		</div>
 	</div>
 		@if($clanWarData['state'] == 'collectionDay')
 		<div class="container my-5 box-shadow-1 px-0">
