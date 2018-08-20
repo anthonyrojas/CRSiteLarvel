@@ -100,6 +100,7 @@
 							<th scope="col">Wins</th>
 							<th scope="col">Crowns</th>
 							<th scope="col">War Trophies</th>
+							<th scope="col">Trophies Change</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -113,6 +114,7 @@
 								<td>{{$clan['wins']}}</td>
 								<td>{{$clan['crowns']}}</td>
 								<td>{{$clan['warTrophies']}}</td>
+								<td>{{$clan['warTrophiesChange']}}</td>
 							</tr>
 						@endforeach
 					</tbody>
