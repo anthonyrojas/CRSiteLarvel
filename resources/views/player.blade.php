@@ -406,8 +406,8 @@
 							<img src="/images/chests/magical.png" alt="magical chest" class="img-thumbnail bg-none">
 						</div>
 						<div class="col-3 col-md-2">
-							<span class="badge badge-secondary float-right">+{{$playerChestData['superMagical']+1}}</span>
-							<img src="/images/chests/superMagical.png" alt="super magical chest" class="img-thumbnail bg-none">
+							<span class="badge badge-secondary float-right">+{{$playerChestData['megaLightning']+1}}</span>
+							<img src="/images/chests/megaLightning.png" alt="super magical chest" class="img-thumbnail bg-none">
 						</div>
 						<div class="col-3 col-md-2">
 							<span class="badge badge-secondary float-right">+{{$playerChestData['legendary']+1}}</span>
